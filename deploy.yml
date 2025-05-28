@@ -39,9 +39,20 @@ jobs:
             cd $EC2_PROJECT_DIR || exit 1
             git stash
             git pull origin main || exit 1
+            # Create local npm directory for global installations
+            mkdir -p ~/.npm-global
+            npm config set prefix '~/.npm-global'
+            # Add npm-global to PATH
+            export PATH=~/.npm-global/bin:$PATH
+            # Install PM2 globally in user space
+            npm install pm2 -g
+            # Install project dependencies
             npm install || exit 1
-            pm2 restart all || pm2 start server.js --name devops-portfolio
-            pm2 save
+            # Start the application
+            ~/.npm-global/bin/pm2 stop all || true
+            ~/.npm-global/bin/pm2 delete all || true
+            PORT=3000 ~/.npm-global/bin/pm2 start server.js --name portfolio-app
+            ~/.npm-global/bin/pm2 save
             echo "✅ Deployment Complete"
           EOF
 
