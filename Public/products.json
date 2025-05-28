@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "name": "Sweater ",
+    "price": 10.78,
+    "category": "Clothing",
+    "image": "images/th.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Jacket ",
+    "price": 51.14,
+    "category": "Clothing",
+    "image": "images/1.jpg"
+  },
+  {
+    "id": 3,
+    "name": "T-Shirt ",
+    "price": 67.77,
+    "category": "Clothing",
+    "image": "images/2.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "Sweater ",
+    "price": 90.55,
+    "category": "Clothing",
+    "image": "images/4.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Shorts ",
+    "price": 37.77,
+    "category": "Clothing",
+    "image": "images/5.png"
+  },
+  {
+    "id": 6,
+    "name": "Shorts ",
+    "price": 90.68,
+    "category": "Clothing",
+    "image": "images/6.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "Skirt ",
+    "price": 47.71,
+    "category": "Clothing",
+    "image": "images/7.webp"
+  },
+  {
+    "id": 8,
+    "name": "Jacket ",
+    "price": 56.96,
+    "category": "Clothing",
+    "image": "images/8.avif"
+  },
+  {
+    "id": 9,
+    "name": "Shorts ",
+    "price": 23.63,
+    "category": "Clothing",
+    "image": "images/9.jpeg"
+  },
+  {
+    "id": 10,
+    "name": "Cap ",
+    "price": 15.38,
+    "category": "Clothing",
+    "image": "images/10.jpeg"
+  },
+  {
+    "id": 11,
+    "name": "Scarf ",
+    "price": 67.55,
+    "category": "Clothing",
+    "image": "images/scarf.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Shoes ",
+    "price": 72.3,
+    "category": "Clothing",
+    "image": "images/shoes.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Scarf ",
+    "price": 49.4,
+    "category": "Clothing",
+    "image": "images/scarf.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Shoes ",
+    "price": 88.3,
+    "category": "Clothing",
+    "image": "images/shoes.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Scarf ",
+    "price": 83.76,
+    "category": "Clothing",
+    "image": "images/scarf.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Scarf 16",
+    "price": 98.78,
+    "category": "Clothing",
+    "image": "images/scarf.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Jacket 17",
+    "price": 74.21,
+    "category": "Clothing",
+    "image": "images/jacket.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Jacket 18",
+    "price": 38.58,
+    "category": "Clothing",
+    "image": "images/jacket.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Jeans 19",
+    "price": 76.49,
+    "category": "Clothing",
+    "image": "images/jeans.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Jeans 20",
+    "price": 97.51,
+    "category": "Clothing",
+    "image": "images/jeans.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Headphones 1",
+    "price": 27.28,
+    "category": "Electronics",
+    "image": "images/headphones.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Charger 2",
+    "price": 78.22,
+    "category": "Electronics",
+    "image": "images/charger.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Monitor 3",
+    "price": 75.88,
+    "category": "Electronics",
+    "image": "images/monitor.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Camera 4",
+    "price": 21.0,
+    "category": "Electronics",
+    "image": "images/camera.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Camera 5",
+    "price": 75.46,
+    "category": "Electronics",
+    "image": "images/camera.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Tablet 6",
+    "price": 57.05,
+    "category": "Electronics",
+    "image": "images/tablet.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Mouse 7",
+    "price": 90.35,
+    "category": "Electronics",
+    "image": "images/mouse.jpg"
+  },
+  {
+    "id": 28,
+    "name": "USB Drive 8",
+    "price": 51.78,
+    "category": "Electronics",
+    "image": "images/usb-drive.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Camera 9",
+    "price": 27.6,
+    "category": "Electronics",
+    "image": "images/camera.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Tablet 10",
+    "price": 79.12,
+    "category": "Electronics",
+    "image": "images/tablet.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Charger 11",
+    "price": 14.8,
+    "category": "Electronics",
+    "image": "images/charger.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Camera 12",
+    "price": 11.42,
+    "category": "Electronics",
+    "image": "images/camera.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Keyboard 13",
+    "price": 23.37,
+    "category": "Electronics",
+    "image": "images/keyboard.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Mouse 14",
+    "price": 33.83,
+    "category": "Electronics",
+    "image": "images/mouse.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Camera 15",
+    "price": 70.94,
+    "category": "Electronics",
+    "image": "images/camera.jpg"
+  },
+  {
+    "id": 36,
+    "name": "Monitor 16",
+    "price": 63.58,
+    "category": "Electronics",
+    "image": "images/monitor.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Monitor 17",
+    "price": 65.86,
+    "category": "Electronics",
+    "image": "images/monitor.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Mouse 18",
+    "price": 32.45,
+    "category": "Electronics",
+    "image": "images/mouse.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Keyboard 19",
+    "price": 66.97,
+    "category": "Electronics",
+    "image": "images/keyboard.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Speaker 20",
+    "price": 61.34,
+    "category": "Electronics",
+    "image": "images/speaker.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Sunglasses 1",
+    "price": 36.76,
+    "category": "Accessories",
+    "image": "images/sunglasses.jpg"
+  },
+  {
+    "id": 42,
+    "name": "Necklace 2",
+    "price": 33.37,
+    "category": "Accessories",
+    "image": "images/necklace.jpg"
+  },
+  {
+    "id": 43,
+    "name": "Bottle 3",
+    "price": 89.43,
+    "category": "Accessories",
+    "image": "images/bottle.jpg"
+  },
+  {
+    "id": 44,
+    "name": "Necklace 4",
+    "price": 58.51,
+    "category": "Accessories",
+    "image": "images/necklace.jpg"
+  },
+  {
+    "id": 45,
+    "name": "Wallet 5",
+    "price": 67.93,
+    "category": "Accessories",
+    "image": "images/wallet.jpg"
+  },
+  {
+    "id": 46,
+    "name": "Hat 6",
+    "price": 11.67,
+    "category": "Accessories",
+    "image": "images/hat.jpg"
+  },
+  {
+    "id": 47,
+    "name": "Belt 7",
+    "price": 49.93,
+    "category": "Accessories",
+    "image": "images/belt.jpg"
+  },
+  {
+    "id": 48,
+    "name": "Bracelet 8",
+    "price": 78.72,
+    "category": "Accessories",
+    "image": "images/bracelet.jpg"
+  },
+  {
+    "id": 49,
+    "name": "Backpack 9",
+    "price": 46.16,
+    "category": "Accessories",
+    "image": "images/backpack.jpg"
+  },
+  {
+    "id": 50,
+    "name": "Watch 10",
+    "price": 39.09,
+    "category": "Accessories",
+    "image": "images/watch.jpg"
+  },
+  {
+    "id": 51,
+    "name": "Necklace 11",
+    "price": 70.35,
+    "category": "Accessories",
+    "image": "images/necklace.jpg"
+  },
+  {
+    "id": 52,
+    "name": "Necklace 12",
+    "price": 38.09,
+    "category": "Accessories",
+    "image": "images/necklace.jpg"
+  },
+  {
+    "id": 53,
+    "name": "Bottle 13",
+    "price": 57.42,
+    "category": "Accessories",
+    "image": "images/bottle.jpg"
+  },
+  {
+    "id": 54,
+    "name": "Sunglasses 14",
+    "price": 54.35,
+    "category": "Accessories",
+    "image": "images/sunglasses.jpg"
+  },
+  {
+    "id": 55,
+    "name": "Bottle 15",
+    "price": 70.23,
+    "category": "Accessories",
+    "image": "images/bottle.jpg"
+  },
+  {
+    "id": 56,
+    "name": "Sunglasses 16",
+    "price": 34.6,
+    "category": "Accessories",
+    "image": "images/sunglasses.jpg"
+  },
+  {
+    "id": 57,
+    "name": "Watch 17",
+    "price": 39.65,
+    "category": "Accessories",
+    "image": "images/watch.jpg"
+  },
+  {
+    "id": 58,
+    "name": "Bracelet 18",
+    "price": 65.79,
+    "category": "Accessories",
+    "image": "images/bracelet.jpg"
+  },
+  {
+    "id": 59,
+    "name": "Ring 19",
+    "price": 96.25,
+    "category": "Accessories",
+    "image": "images/ring.jpg"
+  },
+  {
+    "id": 60,
+    "name": "Backpack 20",
+    "price": 34.2,
+    "category": "Accessories",
+    "image": "images/backpack.jpg"
+  }
+]

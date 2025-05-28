@@ -1,221 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivek's Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Custom Animations */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        .animate-bounce {
-            animation: bounce 2s infinite;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Gradients */
-        .hero-gradient {
-            background: linear-gradient(to bottom right, #4c1d95, #1e3a8a);
-        }
-
-        .about-gradient {
-            background: linear-gradient(to bottom right, #1e3a8a, #4c1d95);
-        }
-
-        /* Hover Effects */
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #4c1d95;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6d28d9;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivek Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-black text-white">
-    <div class="snap-y snap-mandatory h-screen overflow-y-scroll">
-        <!-- Hero Section -->
-        <section id="hero" class="snap-start h-screen flex flex-col md:flex-row items-center justify-center px-8 py-16 hero-gradient relative overflow-hidden">
-            <div class="text-center md:text-left space-y-8 z-10 hover-scale">
-                <h1 class="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-                    Vivek
-                </h1>
-                
-                <div class="space-y-4">
-                    <h2 class="text-4xl font-bold text-white">Welcome to your Portfolio</h2>
-                    <p class="text-xl text-gray-300">Scroll down to explore my journey</p>
+<body class="snap-y snap-mandatory h-screen overflow-y-scroll">
+  <!-- Navigation Menu -->
+  <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-40 backdrop-blur-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-white font-bold text-xl hover:text-purple-400 transition-colors">Vivek</a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-purple-600">Home</a>
+            <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-purple-600 hover:bg-opacity-50 transition-colors">About</a>
+            <a href="#projects" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-purple-600 hover:bg-opacity-50 transition-colors">Projects</a>
+            <div class="relative" id="dropdown">
+              <button onclick="toggleDropdown()" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-purple-600 hover:bg-opacity-50 transition-colors focus:outline-none">More ▼</button>
+              <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div class="py-1">
+                  <a href="#achievements" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Achievements</a>
+                  <a href="#portfolios" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Previous Portfolios</a>
+                  <a href="#experience" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Experience</a>
                 </div>
+              </div>
             </div>
+            <a href="#personal-info" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-purple-600 hover:bg-opacity-50 transition-colors">Personal Info</a>
+            <button id="logoutBtn" class="px-3 py-2 rounded-md text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-900 hover:bg-opacity-50 transition-colors">
+              Logout
+            </button>
+                      </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-            <div class="mt-12 md:mt-0 md:ml-12 hover-scale">
-                <img 
-                    src="images/c79c53aa92f5777e549f3653c7d47a79.png" 
-                    alt="Profile" 
-                    class="max-w-sm rounded-full shadow-2xl ring-4 ring-purple-500 hover:ring-pink-500 transition-all duration-300"
-                />
-            </div>
+  <!-- Add this script before closing body tag -->
 
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <p class="text-white text-sm">Scroll Down ↓</p>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="snap-start h-screen about-gradient relative overflow-hidden">
-            <div class="min-h-screen pt-20 px-8">
-                <div class="max-w-6xl mx-auto relative z-10">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="relative group hover-scale">
-                            <div class="relative rounded-2xl overflow-hidden">
-                                <img
-                                    src="images/d7d897070590fa9cbf6c0346a90b66c8.png"
-                                    alt="About Me Profile"
-                                    class="w-full h-auto rounded-2xl transform transition-transform duration-500"
-                                />
-                            </div>
-                        </div>
+  <!-- Hero Section -->
+  <section class="snap-start h-screen flex flex-col md:flex-row items-center justify-center px-8 py-16 bg-gradient-to-br from-purple-900 to-blue-900 relative overflow-hidden">
+    <div class="text-center md:text-left space-y-8 z-10">
+      <h1 class="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+        Vivek
+      </h1>
+      <div class="space-y-4">
+        <h2 class="text-4xl font-bold text-white">Welcome to My Portfolio</h2>
+        <p class="text-xl text-gray-300">Scroll down to explore my journey</p>
+      </div>
+    </div>
+    <div class="mt-12 md:mt-0 md:ml-12">
+      <img 
+  src="images/c79c53aa92f5777e549f3653c7d47a79.png" 
+  alt="Profile" 
+  class="max-w-sm rounded-full shadow-2xl ring-4 ring-purple-500 hover:ring-pink-500 transition-all duration-300 hover:scale-105"
+/>
 
-                        <div class="space-y-6">
-                            <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                                About Me
-                            </h1>
-                            <div class="prose prose-invert">
-                                <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                                    I am a passionate full-stack developer with a keen interest in building innovative web solutions. 
-                                    With several years of experience in modern web technologies, I specialize in creating responsive 
-                                    and user-friendly applications that solve real-world problems.
-                                </p>
-                                <p class="text-gray-300 text-lg leading-relaxed">
-                                    My approach combines technical expertise with creative problem-solving, ensuring that each project 
-                                    not only meets but exceeds expectations. I'm constantly learning and adapting to new technologies 
-                                    to stay at the forefront of web development.
-                                </p>
-                            </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <p class="text-white text-sm">Scroll Down ↓</p>
+    </div>
+  </section>
 
-                            <!-- Skills Grid -->
-                            <div class="mt-8">
-                                <h2 class="text-2xl font-semibold text-white mb-6">Skills & Expertise</h2>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
-                                        <h3 class="text-lg font-semibold text-purple-300 mb-3">Frontend</h3>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">React</span>
-                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Vue.js</span>
-                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Next.js</span>
-                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Tailwind CSS</span>
-                                        </div>
-                                    </div>
-                                    <!-- Add more skill categories here -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- About Section -->
+  <!-- About Section -->
+<section class="min-h-screen pt-20 px-8 bg-gradient-to-br from-blue-900 to-purple-900 relative overflow-hidden">
+  <!-- Background Animated Blobs -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute w-96 h-96 bg-purple-500/5 rounded-full" style="left: 20%; top: 10%; animation: blob1 22s linear infinite;"></div>
+    <div class="absolute w-96 h-96 bg-purple-500/5 rounded-full" style="left: 50%; top: 30%; animation: blob2 24s linear infinite;"></div>
+    <div class="absolute w-96 h-96 bg-purple-500/5 rounded-full" style="left: 80%; top: 50%; animation: blob3 26s linear infinite;"></div>
+  </div>
 
-        <!-- Projects Section -->
-        <section id="projects" class="snap-start h-screen">
-            <div class="min-h-screen py-20 px-8 bg-gradient-to-br from-purple-900 via-blue-900 to-black relative overflow-hidden">
-                <div class="max-w-6xl mx-auto relative z-10">
-                    <h1 class="text-5xl font-bold text-white mb-12 text-center">My Projects</h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Project Card -->
-                        <div class="bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-lg hover-scale">
-                            <div class="relative overflow-hidden group">
-                                <img src="images/bc394c3dfb9885cd22037048336e6932.png" alt="Project 1" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-                            </div>
-                            <div class="p-6 space-y-4">
-                                <h3 class="text-2xl font-bold text-white mb-2">Project 1</h3>
-                                <p class="text-gray-300">A modern web application built with React and Node.js</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">React</span>
-                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Node.js</span>
-                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">MongoDB</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add more project cards here -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Add other sections (Achievements, Previous Portfolios, Experience, Personal Info) following the same pattern -->
+  <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <!-- Image Section -->
+    <div class="relative group">
+      <div class="relative rounded-2xl overflow-hidden">
+        <img src="images/d7d897070590fa9cbf6c0346a90b66c8.png" alt="Profile" class="w-full h-auto rounded-2xl transform group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+      <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-20 blur-2xl animate-pulse"></div>
     </div>
 
+    <!-- Content Section -->
+    <div class="space-y-6">
+      <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">About Me</h1>
+      <p class="text-gray-300 text-lg leading-relaxed mb-6">
+        I am a passionate full-stack developer with a keen interest in building innovative web solutions. 
+        With several years of experience in modern web technologies, I specialize in creating responsive 
+        and user-friendly applications that solve real-world problems.
+      </p>
+      <p class="text-gray-300 text-lg leading-relaxed">
+        My approach combines technical expertise with creative problem-solving, ensuring that each project 
+        not only meets but exceeds expectations. I'm constantly learning and adapting to new technologies 
+        to stay at the forefront of web development.
+      </p>
+
+      <!-- Skills Grid -->
+      <h2 class="text-2xl font-semibold text-white mb-6">Skills & Expertise</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
+          <h3 class="text-lg font-semibold text-purple-300 mb-3">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">React</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Vue.js</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Next.js</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
+          <h3 class="text-lg font-semibold text-purple-300 mb-3">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Node.js</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Python</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Express</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
+          <h3 class="text-lg font-semibold text-purple-300 mb-3">Tools</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Git</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Docker</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">AWS</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Figma</span>
+          </div>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
+          <h3 class="text-lg font-semibold text-purple-300 mb-3">Soft Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Team Leadership</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Communication</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Problem Solving</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Projects Section -->
+  <section class="min-h-screen py-20 px-8 bg-gradient-to-br from-purple-900 via-blue-900 to-black relative overflow-hidden">
+    <!-- Background Animation -->
+    <div class="absolute inset-0 w-full h-full">
+      <div class="absolute w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="text-5xl font-bold text-white mb-12 text-center">My Projects</h1>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card -->
+        <div class="bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-lg transform-gpu">
+          <div class="relative overflow-hidden group">
+            <img src="/images/bc394c3dfb9885cd22037048336e6932.png" alt="Project 1" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-2xl font-bold text-white mb-2">Project 1</h3>
+            <p class="text-gray-300">A modern web application built with React and Node.js</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">React</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Node.js</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">MongoDB</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Repeat for Project 2 and 3 -->
+        <div class="bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-lg transform-gpu">
+          <div class="relative overflow-hidden group">
+            <img src="/images/bc394c3dfb9885cd22037048336e6932.png" alt="Project 2" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-2xl font-bold text-white mb-2">Project 2</h3>
+            <p class="text-gray-300">Full-stack e-commerce platform with real-time features</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Next.js</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Express</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-lg transform-gpu">
+          <div class="relative overflow-hidden group">
+            <img src="/images/bc394c3dfb9885cd22037048336e6932.png" alt="Project 3" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-2xl font-bold text-white mb-2">Project 3</h3>
+            <p class="text-gray-300">Mobile-first responsive web application</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">React Native</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Firebase</span>
+              <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Redux</span>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Achievements Section -->
+  <section class="min-h-screen py-20 px-8 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
+    <!-- Static Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute w-full h-full">
+        <!-- Simulated bubbles -->
+        <!-- You can duplicate the below div to mimic motion effect -->
+        <div class="absolute bg-white rounded-full opacity-10" style="width: 80px; height: 80px; top: 30%; left: 20%;"></div>
+        <div class="absolute bg-white rounded-full opacity-10" style="width: 100px; height: 100px; top: 70%; left: 50%;"></div>
+      </div>
+    </div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="text-5xl font-bold text-white mb-12 text-center">
+        Achievements
+      </h1>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Achievement Card 1 -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl overflow-hidden">
+          <div class="relative h-48 overflow-hidden">
+            <img src="/images/d42d8e5d9d1abd5018fdf47d436b02ea.png" alt="Best Project Award" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-2xl font-bold text-white">Best Project Award</h3>
+              <p class="text-purple-300 text-sm">2023</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-300 leading-relaxed">Received recognition for innovative solution in web development</p>
+            <button class="mt-4 px-4 py-2 bg-purple-500 bg-opacity-30 rounded-lg text-white hover:bg-opacity-50 transition-colors">
+              Learn More
+            </button>
+          </div>
+        </div>
+  
+        <!-- Achievement Card 2 -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl overflow-hidden">
+          <div class="relative h-48 overflow-hidden">
+            <img src="/images/d42d8e5d9d1abd5018fdf47d436b02ea.png" alt="Certification Excellence" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-2xl font-bold text-white">Certification Excellence</h3>
+              <p class="text-purple-300 text-sm">2023</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-300 leading-relaxed">Completed advanced full-stack development certification</p>
+            <button class="mt-4 px-4 py-2 bg-purple-500 bg-opacity-30 rounded-lg text-white hover:bg-opacity-50 transition-colors">
+              Learn More
+            </button>
+          </div>
+        </div>
+  
+        <!-- Achievement Card 3 -->
+        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl overflow-hidden">
+          <div class="relative h-48 overflow-hidden">
+            <img src="/images/d42d8e5d9d1abd5018fdf47d436b02ea.png" alt="Hackathon Winner" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-2xl font-bold text-white">Hackathon Winner</h3>
+              <p class="text-purple-300 text-sm">2022</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-300 leading-relaxed">First place in national coding competition</p>
+            <button class="mt-4 px-4 py-2 bg-purple-500 bg-opacity-30 rounded-lg text-white hover:bg-opacity-50 transition-colors">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="min-h-screen pt-20 px-8 bg-gradient-to-br from-blue-900 to-purple-900 relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute w-72 h-72 bg-white/5 rounded-full" style="left: 30%; top: 20%;"></div>
+      <div class="absolute w-72 h-72 bg-white/5 rounded-full" style="left: 55%; top: 40%;"></div>
+      <div class="absolute w-72 h-72 bg-white/5 rounded-full" style="left: 80%; top: 60%;"></div>
+    </div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-12 text-center">
+        Previous Portfolios
+      </h1>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Portfolio Item 1 -->
+        <div class="group relative bg-white/10 rounded-xl overflow-hidden backdrop-blur-lg transform-gpu transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
+          <a href="https://portfolio-2022.example.com" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="relative h-48 overflow-hidden">
+              <img src="/images/portfolio-2022.jpg" alt="Portfolio 2022" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+  
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                Portfolio 2022
+              </h3>
+              <p class="text-gray-300 group-hover:text-white transition-colors">
+                A modern portfolio showcasing my web development journey
+              </p>
+  
+              <div class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300">
+                View Portfolio
+                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+  
+        <!-- Portfolio Item 2 -->
+        <div class="group relative bg-white/10 rounded-xl overflow-hidden backdrop-blur-lg transform-gpu transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
+          <a href="https://portfolio-2021.example.com" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="relative h-48 overflow-hidden">
+              <img src="/images/portfolio-2021.jpg" alt="Portfolio 2021" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+  
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                Portfolio 2021
+              </h3>
+              <p class="text-gray-300 group-hover:text-white transition-colors">
+                My first professional portfolio website
+              </p>
+  
+              <div class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300">
+                View Portfolio
+                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+  
+      
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Experience Section -->
+  <section class="min-h-screen pt-20 px-8 bg-gradient-to-br from-purple-900 to-blue-900 relative overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 opacity-10">
+      <img src="/images/93e8815c008e2619710d22cb5010642b.png" alt="Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-blue-900 opacity-90"></div>
+    </div>
+  
+    <!-- Floating Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute w-64 h-64 bg-white/5 rounded-full" style="left: 20%; top: 10%;"></div>
+      <div class="absolute w-64 h-64 bg-white/5 rounded-full" style="left: 35%; top: 25%;"></div>
+      <div class="absolute w-64 h-64 bg-white/5 rounded-full" style="left: 50%; top: 40%;"></div>
+      <div class="absolute w-64 h-64 bg-white/5 rounded-full" style="left: 65%; top: 55%;"></div>
+      <div class="absolute w-64 h-64 bg-white/5 rounded-full" style="left: 80%; top: 70%;"></div>
+    </div>
+  
+    <div class="max-w-6xl mx-auto relative z-10">
+      <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-12 text-center">
+        Professional Experience
+      </h1>
+  
+      <div class="space-y-8">
+        <!-- Experience Item 1 -->
+        <div class="relative">
+          <div class="flex items-center mb-4">
+            <div class="w-4 h-4 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50"></div>
+            <div class="flex-1 h-0.5 bg-gradient-to-r from-purple-500 to-transparent"></div>
+          </div>
+  
+          <div class="bg-white/10 rounded-xl p-6 backdrop-blur-lg border border-white/10 hover:border-purple-500/30 transition-colors duration-300">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Tech Solutions Inc.</h3>
+                <p class="text-purple-400 font-semibold">Senior Full Stack Developer</p>
+              </div>
+              <div class="mt-2 md:mt-0">
+                <span class="px-4 py-1 bg-purple-500/20 rounded-full text-purple-300 text-sm">2021 - Present</span>
+              </div>
+            </div>
+  
+            <p class="text-gray-300 mb-4">Led development of enterprise web applications, mentored junior developers, and implemented CI/CD pipelines.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">React</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Node.js</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">AWS</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Docker</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Experience Item 2 -->
+        <div class="relative">
+          <div class="flex items-center mb-4">
+            <div class="w-4 h-4 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50"></div>
+            <div class="flex-1 h-0.5 bg-gradient-to-r from-purple-500 to-transparent"></div>
+          </div>
+  
+          <div class="bg-white/10 rounded-xl p-6 backdrop-blur-lg border border-white/10 hover:border-purple-500/30 transition-colors duration-300">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Digital Innovations Ltd</h3>
+                <p class="text-purple-400 font-semibold">Full Stack Developer</p>
+              </div>
+              <div class="mt-2 md:mt-0">
+                <span class="px-4 py-1 bg-purple-500/20 rounded-full text-purple-300 text-sm">2019 - 2021</span>
+              </div>
+            </div>
+  
+            <p class="text-gray-300 mb-4">Developed and maintained multiple client projects, improved application performance by 40%.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Vue.js</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Python</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">PostgreSQL</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Redis</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Experience Item 3 -->
+        <div class="relative">
+          <div class="flex items-center mb-4">
+            <div class="w-4 h-4 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50"></div>
+            <div class="flex-1 h-0.5 bg-gradient-to-r from-purple-500 to-transparent"></div>
+          </div>
+  
+          <div class="bg-white/10 rounded-xl p-6 backdrop-blur-lg border border-white/10 hover:border-purple-500/30 transition-colors duration-300">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">StartUp Ventures</h3>
+                <p class="text-purple-400 font-semibold">Frontend Developer</p>
+              </div>
+              <div class="mt-2 md:mt-0">
+                <span class="px-4 py-1 bg-purple-500/20 rounded-full text-purple-300 text-sm">2018 - 2019</span>
+              </div>
+            </div>
+  
+            <p class="text-gray-300 mb-4">Built responsive web applications and implemented modern UI/UX designs.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">React</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">JavaScript</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">SASS</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-blue-300 text-sm">Webpack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Additional Skills Section -->
+      <div class="mt-16 text-center">
+        <h2 class="text-2xl font-bold text-white mb-6">Additional Skills & Certifications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">Agile Project Management</span></div>
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">Team Leadership</span></div>
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">Cloud Architecture</span></div>
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">CI/CD Implementation</span></div>
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">Performance Optimization</span></div>
+          <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"><span class="text-gray-300">Technical Writing</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <!-- <script>
+    function toggleDropdown() {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      dropdownMenu.classList.toggle('hidden');
+    } -->
+
     <script>
-        // Add any necessary JavaScript here
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add scroll animations if needed
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transition = 'opacity 0.5s ease-in-out';
-            });
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => observer.observe(section));
-        });
+    // Add event listener when the document is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get the logout button
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    // Add click event listener to the logout button
+    if (logoutBtn) {
+    logoutBtn.addEventListener('click', handleLogout);
+    }
+    
+    // Logout function
+    function handleLogout() {
+    fetch('/logout', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+    'Content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+    if (response.ok) {
+    // Clear any stored session data
+    sessionStorage.clear();
+    localStorage.clear();
+    
+    // Redirect to the root path which will handle login page redirection
+    window.location.href = '/';
+    } else {
+    throw new Error('Logout failed');
+    }
+    })
+    .catch(error => {
+    console.error('Logout error:', error);
+    alert('Failed to logout. Please try again.');
+    });
+    }
+    });
+    
+    // Your existing dropdown code can stay here
+    window.onclick = function(event) {
+    if (!event.target.matches('#dropdown *')) {
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (const dropdown of dropdowns) {
+    if (!dropdown.classList.contains('hidden')) {
+    dropdown.classList.add('hidden');
+    }
+    }
+    }
+    }
     </script>
 </body>
 </html>

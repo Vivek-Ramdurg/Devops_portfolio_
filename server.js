@@ -263,6 +263,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT,'0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`Portfolio server running at http://localhost:${PORT}`);
 });

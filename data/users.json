@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "username": "akm",
+    "password": "akm",
+    "role": "user",
+    "profile": {
+      "bio": "",
+      "skills": [],
+      "socialLinks": {},
+      "createdAt": "2025-05-28T13:22:54.048Z"
+    }
+  }
+]
