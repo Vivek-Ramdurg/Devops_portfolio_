@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Gradients */
+        .hero-gradient {
+            background: linear-gradient(to bottom right, #4c1d95, #1e3a8a);
+        }
+
+        .about-gradient {
+            background: linear-gradient(to bottom right, #1e3a8a, #4c1d95);
+        }
+
+        /* Hover Effects */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4c1d95;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6d28d9;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="snap-y snap-mandatory h-screen overflow-y-scroll">
+        <!-- Hero Section -->
+        <section id="hero" class="snap-start h-screen flex flex-col md:flex-row items-center justify-center px-8 py-16 hero-gradient relative overflow-hidden">
+            <div class="text-center md:text-left space-y-8 z-10 hover-scale">
+                <h1 class="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                    Vivek
+                </h1>
+                
+                <div class="space-y-4">
+                    <h2 class="text-4xl font-bold text-white">Welcome to My Portfolio</h2>
+                    <p class="text-xl text-gray-300">Scroll down to explore my journey</p>
+                </div>
+            </div>
+
+            <div class="mt-12 md:mt-0 md:ml-12 hover-scale">
+                <img 
+                    src="images/c79c53aa92f5777e549f3653c7d47a79.png" 
+                    alt="Profile" 
+                    class="max-w-sm rounded-full shadow-2xl ring-4 ring-purple-500 hover:ring-pink-500 transition-all duration-300"
+                />
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <p class="text-white text-sm">Scroll Down ↓</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="snap-start h-screen about-gradient relative overflow-hidden">
+            <div class="min-h-screen pt-20 px-8">
+                <div class="max-w-6xl mx-auto relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="relative group hover-scale">
+                            <div class="relative rounded-2xl overflow-hidden">
+                                <img
+                                    src="images/d7d897070590fa9cbf6c0346a90b66c8.png"
+                                    alt="About Me Profile"
+                                    class="w-full h-auto rounded-2xl transform transition-transform duration-500"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                                About Me
+                            </h1>
+                            <div class="prose prose-invert">
+                                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                    I am a passionate full-stack developer with a keen interest in building innovative web solutions. 
+                                    With several years of experience in modern web technologies, I specialize in creating responsive 
+                                    and user-friendly applications that solve real-world problems.
+                                </p>
+                                <p class="text-gray-300 text-lg leading-relaxed">
+                                    My approach combines technical expertise with creative problem-solving, ensuring that each project 
+                                    not only meets but exceeds expectations. I'm constantly learning and adapting to new technologies 
+                                    to stay at the forefront of web development.
+                                </p>
+                            </div>
+
+                            <!-- Skills Grid -->
+                            <div class="mt-8">
+                                <h2 class="text-2xl font-semibold text-white mb-6">Skills & Expertise</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300">
+                                        <h3 class="text-lg font-semibold text-purple-300 mb-3">Frontend</h3>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">React</span>
+                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Vue.js</span>
+                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Next.js</span>
+                                            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-purple-200 text-sm hover:bg-purple-500/30 transition-colors duration-300">Tailwind CSS</span>
+                                        </div>
+                                    </div>
+                                    <!-- Add more skill categories here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="snap-start h-screen">
+            <div class="min-h-screen py-20 px-8 bg-gradient-to-br from-purple-900 via-blue-900 to-black relative overflow-hidden">
+                <div class="max-w-6xl mx-auto relative z-10">
+                    <h1 class="text-5xl font-bold text-white mb-12 text-center">My Projects</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project Card -->
+                        <div class="bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-lg hover-scale">
+                            <div class="relative overflow-hidden group">
+                                <img src="images/bc394c3dfb9885cd22037048336e6932.png" alt="Project 1" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <h3 class="text-2xl font-bold text-white mb-2">Project 1</h3>
+                                <p class="text-gray-300">A modern web application built with React and Node.js</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">React</span>
+                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">Node.js</span>
+                                    <span class="px-3 py-1 bg-purple-500 bg-opacity-30 rounded-full text-sm text-white hover:bg-opacity-50 transition-colors">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more project cards here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add other sections (Achievements, Previous Portfolios, Experience, Personal Info) following the same pattern -->
+    </div>
+
+    <script>
+        // Add any necessary JavaScript here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll animations if needed
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transition = 'opacity 0.5s ease-in-out';
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

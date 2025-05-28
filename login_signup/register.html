@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Register - E-Shop</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to right, #fddb92, #d1fdff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .register-box {
+      background: #ffffff;
+      padding: 50px 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .register-box h2 {
+      font-size: 34px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .register-box input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      font-size: 17px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: border 0.3s;
+    }
+
+    .register-box input:focus {
+      border-color: #FF6F61;
+      outline: none;
+    }
+
+    .register-box button {
+      width: 100%;
+      padding: 14px;
+      background: #FF6F61;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .register-box button:hover {
+      background: #e05a50;
+    }
+
+    .register-box p {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .register-box a {
+      color: #FF6F61;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .register-box a:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 14px;
+      color: red;
+    }
+
+    @media (max-width: 480px) {
+      .register-box {
+        padding: 30px 20px;
+      }
+
+      .register-box h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>📝 Create Your Account</h2>
+    <form id="register-form">
+      <input type="text" id="username" placeholder="👤 Username" required/>
+      <input type="password" id="password" placeholder="🔒 Password" required/>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/">Login here</a></p>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const message = document.getElementById("message");
+      message.textContent = ""; // Clear old message
+
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value
+        })
+      });
+
+      if (res.ok) {
+        message.style.color = "green";
+        message.textContent = "✅ Registered successfully! Redirecting to login...";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1500);
+      } else {
+        message.style.color = "red";
+        message.textContent = "❌ Registration failed. Try another username.";
+      }
+    });
+  </script>
+</body>
+</html>
