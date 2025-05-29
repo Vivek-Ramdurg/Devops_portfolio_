@@ -15,9 +15,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-// Add this line to serve static files from public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
 // File paths
 const USERS_FILE = 'data/users.json';
 const PROJECTS_FILE = 'data/projects.json';
