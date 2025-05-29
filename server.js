@@ -80,19 +80,39 @@ app.get('/register', (req, res) => {
 // Login handler
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
+
+  // Validate input
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
+
   fs.readFile(USERS_FILE, (err, data) => {
-    if (err) return res.status(500).send("Server error");
-    const users = JSON.parse(data);
-    const user = users.find(u => u.username === username && u.password === password);
-    if (user) {
-      req.session.user = {
-        username: user.username,
-        role: user.role || 'user',
-        profile: user.profile || {}
-      };
-      res.status(200).json({ message: "Login successful", role: user.role });
-    } else {
-      res.status(401).send("Invalid credentials");
+    if (err) {
+      console.error('Error reading users file:', err);
+      return res.status(500).json({ message: "Server error" });
+    }
+
+    try {
+      const users = JSON.parse(data);
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        req.session.user = {
+          username: user.username,
+          role: user.role || 'user',
+          profile: user.profile || {}
+        };
+        res.status(200).json({ 
+          message: "Login successful", 
+          role: user.role,
+          redirect: '/public/index.html'
+        });
+      } else {
+        res.status(401).json({ message: "Invalid username or password" });
+      }
+    } catch (parseError) {
+      console.error('Error parsing users file:', parseError);
+      res.status(500).json({ message: "Server error" });
     }
   });
 });

@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles to ensure input text is visible */
+        input {
+            color: white !important;
+        }
+        input::placeholder {
+            color: #9CA3AF !important;
+        }
+        /* Add focus styles */
+        input:focus {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: #8B5CF6 !important;
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-purple-900 to-blue-900 min-h-screen flex items-center justify-center">
     <div class="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-2xl w-96 space-y-6">
         <h1 class="text-3xl font-bold text-white text-center">Welcome Back</h1>
+        <div id="errorMessage" class="hidden bg-red-500/10 border border-red-500 text-red-200 px-4 py-2 rounded"></div>
         <form id="loginForm" class="space-y-4">
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-300">Username</label>
-                <input type="text" id="username" name="username" required
-                    class="mt-1 block w-full px-3 py-2 bg-white/5 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                <input type="text" id="username" name="username" required placeholder="Enter your username"
+                    class="mt-1 block w-full px-3 py-2 bg-white/5 border border-gray-600 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
-                <input type="password" id="password" name="password" required
-                    class="mt-1 block w-full px-3 py-2 bg-white/5 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                <input type="password" id="password" name="password" required placeholder="Enter your password"
+                    class="mt-1 block w-full px-3 py-2 bg-white/5 border border-gray-600 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
-            <button type="submit"
+            <button type="submit" id="submitButton"
                 class="w-full py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors">
                 Sign In
             </button>
@@ -32,10 +47,30 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const submitButton = document.getElementById('submitButton');
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+            setTimeout(() => {
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const username = document.getElementById('username').value;
+            const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Signing in...';
 
             try {
                 const response = await fetch('/login', {
@@ -46,14 +81,19 @@
                     body: JSON.stringify({ username, password }),
                 });
 
+                const data = await response.json();
+
                 if (response.ok) {
                     window.location.href = '/public/index.html';
                 } else {
-                    alert('Invalid credentials');
+                    showError(data.message || 'Invalid credentials');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred during login');
+                showError('An error occurred during login');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Sign In';
             }
         });
     </script>
