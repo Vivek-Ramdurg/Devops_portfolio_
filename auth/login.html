@@ -84,7 +84,8 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    window.location.href = '/public/index.html';
+                    // Open index.html in a new tab
+                    window.open('/public/index.html', '_blank');
                 } else {
                     showError(data.message || 'Invalid credentials');
                 }
