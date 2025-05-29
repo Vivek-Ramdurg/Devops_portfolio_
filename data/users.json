@@ -9,5 +9,16 @@
       "socialLinks": {},
       "createdAt": "2025-05-28T13:22:54.048Z"
     }
+  },
+  {
+    "username": "van",
+    "password": "van",
+    "role": "user",
+    "profile": {
+      "bio": "",
+      "skills": [],
+      "socialLinks": {},
+      "createdAt": "2025-05-29T06:34:09.750Z"
+    }
   }
 ]
