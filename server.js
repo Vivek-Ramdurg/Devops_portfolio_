@@ -97,21 +97,25 @@ app.post('/login', (req, res) => {
       const user = users.find(u => u.username === username && u.password === password);
 
       if (user) {
+        // Save user data in session
         req.session.user = {
+          id: user.id,
           username: user.username,
-          role: user.role || 'user',
-          profile: user.profile || {}
+          role: user.role
         };
-        res.status(200).json({ 
-          message: "Login successful", 
-          role: user.role,
-          redirect: '/public/index.html'
+        // Save session before redirecting
+        req.session.save((err) => {
+          if (err) {
+            console.error('Session save error:', err);
+            return res.status(500).json({ message: "Session error" });
+          }
+          return res.json({ message: "Login successful" });
         });
       } else {
-        res.status(401).json({ message: "Invalid username or password" });
+        res.status(401).json({ message: "Invalid credentials" });
       }
-    } catch (parseError) {
-      console.error('Error parsing users file:', parseError);
+    } catch (error) {
+      console.error('Error parsing users file:', error);
       res.status(500).json({ message: "Server error" });
     }
   });
