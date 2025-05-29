@@ -1,0 +1,60 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your repo
+
+env:
+  NODE_VERSION: '18.x'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install SSH Key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_PROJECT_DIR: ${{ secrets.EC2_PROJECT_DIR }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem $EC2_USER@$EC2_HOST << EOF
+            echo "🔁 Pulling latest changes"
+            cd $EC2_PROJECT_DIR || exit 1
+            git stash
+            git pull origin main || exit 1
+            # Create local npm directory for global installations
+            mkdir -p ~/.npm-global
+            npm config set prefix '~/.npm-global'
+            # Add npm-global to PATH
+            export PATH=~/.npm-global/bin:$PATH
+            # Install PM2 globally in user space
+            npm install pm2 -g
+            # Install project dependencies
+            npm install || exit 1
+            # Start the application
+            ~/.npm-global/bin/pm2 stop all || true
+            ~/.npm-global/bin/pm2 delete all || true
+            PORT=3000 ~/.npm-global/bin/pm2 start server.js --name portfolio-app
+            ~/.npm-global/bin/pm2 save
+            echo "✅ Deployment Complete"
+          EOF
+
+      - name: Clean up
+        run: rm -f key.pem
