@@ -84,8 +84,10 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Open index.html in a new tab
-                    window.open('/public/index.html', '_blank');
+                    // Store credentials in localStorage
+                    localStorage.setItem('username', username);
+                    // Redirect to the root path which will handle the redirection
+                    window.location.href = '/';
                 } else {
                     showError(data.message || 'Invalid credentials');
                 }

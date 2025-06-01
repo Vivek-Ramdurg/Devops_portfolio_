@@ -1,35 +1,13 @@
 [
   {
-    "username": "akm",
-    "password": "akm",
+    "username": "skm",
+    "password": "skm",
     "role": "user",
     "profile": {
       "bio": "",
       "skills": [],
       "socialLinks": {},
-      "createdAt": "2025-05-28T13:22:54.048Z"
-    }
-  },
-  {
-    "username": "van",
-    "password": "van",
-    "role": "user",
-    "profile": {
-      "bio": "",
-      "skills": [],
-      "socialLinks": {},
-      "createdAt": "2025-05-29T06:34:09.750Z"
-    }
-  },
-  {
-    "username": "sagar",
-    "password": "sagar",
-    "role": "user",
-    "profile": {
-      "bio": "",
-      "skills": [],
-      "socialLinks": {},
-      "createdAt": "2025-05-29T08:26:10.695Z"
+      "createdAt": "2025-06-01T10:30:16.936Z"
     }
   }
 ]
